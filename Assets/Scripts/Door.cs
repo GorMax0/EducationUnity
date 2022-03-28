@@ -13,7 +13,8 @@ public class Door : MonoBehaviour
 
     public void ChangeState()
     {
+       const string isOpen = nameof(IsOpen);
         IsOpen = !IsOpen;
-        _animator.SetBool("IsOpen", IsOpen);
+        _animator.SetBool(isOpen, IsOpen);
     }
 }

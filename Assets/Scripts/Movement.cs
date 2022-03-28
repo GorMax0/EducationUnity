@@ -42,8 +42,8 @@ public class Movement : MonoBehaviour
 
     private void PlayAnimation(float horizontal, float vertical)
     {
-        _animator.SetBool("Walk", _direction != Vector3.zero);
-        _animator.SetFloat("WalkHorizontal", horizontal);
-        _animator.SetFloat("WalkVertical", vertical);        
+        _animator.SetBool(AnimatorMovement.Walk, _direction != Vector3.zero);
+        _animator.SetFloat(AnimatorMovement.HorizontalWalkingDirection, horizontal);
+        _animator.SetFloat(AnimatorMovement.VerticalWalkingDirection, vertical);        
     }
 }
