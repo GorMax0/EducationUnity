@@ -6,7 +6,7 @@ public class Interaction : MonoBehaviour
     [SerializeField] private GameObject _uiAction;
 
     private TMP_Text _text;
-    private float _distanceRay = 0.75f;
+    private float _distanceRay = 1f;
 
     private void Start()
     {
@@ -24,7 +24,7 @@ public class Interaction : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, _distanceRay))
         {
-            if (hit.collider.TryGetComponent(out Door door))
+            if (hit.collider.TryGetComponent(out DoorInteraction door))
             {
                 _uiAction.SetActive(true);
                 _text.text = door.IsOpen ? "Закрыть дверь" : "Открыть дверь";
@@ -40,5 +40,4 @@ public class Interaction : MonoBehaviour
             _uiAction.SetActive(false);
         }
     }
-
 }

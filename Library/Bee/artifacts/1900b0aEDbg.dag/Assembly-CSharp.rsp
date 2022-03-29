@@ -348,9 +348,11 @@
 -r:"Library/Bee/artifacts/1900b0aEDbg.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/Alarm.cs"
 "Assets/Scripts/AnimatorMovement.cs"
-"Assets/Scripts/Door.cs"
+"Assets/Scripts/DoorInteraction.cs"
+"Assets/Scripts/DoorTrigger.cs"
 "Assets/Scripts/Interaction.cs"
 "Assets/Scripts/Movement.cs"
+"Assets/Scripts/Player.cs"
 -langversion:9.0
 
 /deterministic
