@@ -5,6 +5,7 @@ public class Alarm : MonoBehaviour
 {
     [SerializeField] private DoorTrigger _door;
 
+    private IEnumerator _volumeChange;
     private AudioSource _sound;
     private ParticleSystem _effect;
 
@@ -17,6 +18,24 @@ public class Alarm : MonoBehaviour
     private void Start()
     {
         _door.OnChangeAlarm += StateChange;
+    }
+
+    private void StartVolumeChange(bool isInHouse)
+    {
+        if (_volumeChange == null)
+        {
+            _volumeChange = VolumeChange(isInHouse);
+            StartCoroutine(_volumeChange);
+        }
+    }
+
+    private void StopVolumeChange()
+    {
+        if (_volumeChange != null)
+        {
+            StopCoroutine(_volumeChange);
+            _volumeChange = null;
+        }
     }
 
     private IEnumerator VolumeChange(bool isInHouse)
@@ -35,7 +54,9 @@ public class Alarm : MonoBehaviour
 
     private void StateChange(bool isInHouse)
     {
-        StartCoroutine(VolumeChange(isInHouse));
+        StopVolumeChange();
+        StartVolumeChange(isInHouse);
+
         if (isInHouse)
             _effect.Play();
         else
