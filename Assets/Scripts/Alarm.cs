@@ -5,7 +5,7 @@ public class Alarm : MonoBehaviour
 {
     [SerializeField] private DoorTrigger _door;
 
-    private IEnumerator _volumeChange;
+    private Coroutine _volumeChange;
     private AudioSource _sound;
     private ParticleSystem _effect;
 
@@ -17,15 +17,19 @@ public class Alarm : MonoBehaviour
 
     private void Start()
     {
-        _door.OnChangeAlarm += StateChange;
+        _door.OnChangeAlarm += ControlAlarm;
+    }
+
+    private void OnDestroy()
+    {
+        _door.OnChangeAlarm -= ControlAlarm;
     }
 
     private void StartVolumeChange(bool isInHouse)
     {
         if (_volumeChange == null)
         {
-            _volumeChange = VolumeChange(isInHouse);
-            StartCoroutine(_volumeChange);
+            _volumeChange = StartCoroutine(VolumeChange(isInHouse));
         }
     }
 
@@ -40,19 +44,18 @@ public class Alarm : MonoBehaviour
 
     private IEnumerator VolumeChange(bool isInHouse)
     {
-        int minVolume = 0;
-        int maxVolume = 1;
+        int targetVolume = isInHouse ? 1 : 0;
         float step = 0.02f;
         var waitingTime = new WaitForSeconds(0.1f);
 
-        while (isInHouse ? _sound.volume < maxVolume : _sound.volume > minVolume)
+        while (_sound.volume != targetVolume)
         {
-            _sound.volume += isInHouse ? Mathf.MoveTowards(minVolume, maxVolume, step) : Mathf.MoveTowards(minVolume, maxVolume, -step);
+            _sound.volume = Mathf.MoveTowards(_sound.volume, targetVolume, step);
             yield return waitingTime;
         }
     }
 
-    private void StateChange(bool isInHouse)
+    private void ControlAlarm(bool isInHouse)
     {
         StopVolumeChange();
         StartVolumeChange(isInHouse);

@@ -353,6 +353,7 @@
 "Assets/Scripts/Interaction.cs"
 "Assets/Scripts/Movement.cs"
 "Assets/Scripts/Player.cs"
+"Assets/Scripts/UiAction.cs"
 -langversion:9.0
 
 /deterministic

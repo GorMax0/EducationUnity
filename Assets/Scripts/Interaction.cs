@@ -3,7 +3,7 @@ using TMPro;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField] private GameObject _uiAction;
+    [SerializeField] private UiAction _uiAction;
 
     private TMP_Text _text;
     private float _distanceRay = 1f;
@@ -15,10 +15,10 @@ public class Interaction : MonoBehaviour
 
     private void Update()
     {
-        UseDoor();
+        RaycastWithDoor();
     }
 
-    private void UseDoor()
+    private void RaycastWithDoor()
     {
         Ray ray = new Ray(transform.position, transform.forward);
 
@@ -26,7 +26,7 @@ public class Interaction : MonoBehaviour
         {
             if (hit.collider.TryGetComponent(out DoorInteraction door))
             {
-                _uiAction.SetActive(true);
+                _uiAction.Enable();
                 _text.text = door.IsOpen ? "Закрыть дверь" : "Открыть дверь";
 
                 if (Input.GetKeyDown(KeyCode.E))
@@ -37,7 +37,7 @@ public class Interaction : MonoBehaviour
         }
         else
         {
-            _uiAction.SetActive(false);
+            _uiAction.Disable();
         }
     }
 }

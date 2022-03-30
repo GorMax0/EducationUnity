@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9292834, y: 1.9151102, z: 0.01}
-  m_Center: {x: -0.034134004, y: -0.07952571, z: -0.05}
+  m_Size: {x: 3.1813376, y: 2.087873, z: 7.252338}
+  m_Center: {x: -0.77743393, y: 0.43190795, z: -3.7764626}
 --- !u!114 &4775987271928213718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1188,7 +1188,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2280829024788940752}
-  - component: {fileID: 7607521663362621642}
   m_Layer: 0
   m_Name: medievalHouse
   m_TagString: Untagged
@@ -1264,19 +1263,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &7607521663362621642
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507845256018812266}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 3.34, y: 3.2, z: 7.2}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1563596396174161497
 GameObject:
   m_ObjectHideFlags: 0
